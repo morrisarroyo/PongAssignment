@@ -16,7 +16,7 @@ public class PaddleAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.gameOver)
+        if (!GameManager.instance.gameOver && GameManager.instance.isPlaying)
         {
             puckTr = GameObject.FindGameObjectWithTag("Puck").transform;
             Vector3 movement = transform.position;

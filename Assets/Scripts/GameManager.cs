@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
 
     public bool gameOver;
+    public bool isPlaying = false;
 
     bool aiP2 = false;
     bool pause = false;
@@ -44,18 +45,38 @@ public class GameManager : MonoBehaviour
         {
             consoleScript.OpenConsole();
         }
+        if (Input.GetKeyDown(KeyCode.Joystick1Button4) && !isPlaying )
+        {
+            Start1PGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Joystick1Button5) && !isPlaying)
+        {
+            Start2PGame();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !isPlaying)
+        {
+            Start1PGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && !isPlaying)
+        {
+            Start2PGame();
+        }
+
     }
 
     public void Start1PGame()
     {
         gameOver = false;
         aiP2 = true;
+        menuScript.HideMenu();
         ResetLevel();
     }
 
     public void Start2PGame()
     {
         gameOver = false;
+        aiP2 = false;
+        menuScript.HideMenu();
         ResetLevel();
     }
 
@@ -78,5 +99,6 @@ public class GameManager : MonoBehaviour
         scoreScript.resetScores();
         gameOver = false;
         aiP2 = false;
+        isPlaying = false;
     }
 }

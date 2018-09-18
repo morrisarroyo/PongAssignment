@@ -19,7 +19,9 @@ public class ConsoleScript : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+
+        consoleInputField.ActivateInputField();
         consoleHistory = new List<string>();
         consoleHistoryText.text = "";
     }
