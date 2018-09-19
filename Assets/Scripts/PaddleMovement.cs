@@ -27,6 +27,10 @@ public class PaddleMovement : MonoBehaviour
     void Update()
     {
         float v = Input.GetAxisRaw(input);
+        if (playerNumber == 1)
+        {
+            v += Input.GetAxisRaw("Vertical3");
+        }
         //Debug.Log(gameObject.name + input);
         Move(v);
     }

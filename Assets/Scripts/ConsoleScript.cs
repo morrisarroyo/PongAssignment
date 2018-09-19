@@ -12,12 +12,13 @@ public class ConsoleScript : MonoBehaviour
 
     public Text consoleHistoryText;
     public InputField consoleInputField;
+    public Image consoleBackground;
+
     public MeshRenderer background;
     public MeshRenderer paddle1Renderer;
     public MeshRenderer paddle2Renderer;
-
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         gameObject.SetActive(false);
         consoleHistory = new List<string>();
@@ -34,6 +35,11 @@ public class ConsoleScript : MonoBehaviour
             consoleInputField.text = "";
             consoleInputField.ActivateInputField();
         }
+    }
+
+    void QuitConsole()
+    {
+        gameObject.SetActive(false);
     }
 
     public void OpenConsole()
@@ -98,10 +104,7 @@ public class ConsoleScript : MonoBehaviour
                 break;
         }
     }
-    void QuitConsole()
-    {
-        gameObject.SetActive(false);
-    }
+
 
     Color getColor()
     {

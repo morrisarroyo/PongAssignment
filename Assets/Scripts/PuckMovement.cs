@@ -18,7 +18,7 @@ public class PuckMovement : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
-        velocity = Vector3.down + Vector3.left * initialXVelocity;
+        velocity = Vector3.left * initialXVelocity;
         rb.velocity = velocity;
     }
 
