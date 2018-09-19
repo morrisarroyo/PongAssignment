@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         {
             consoleScript.OpenConsole();
         }
-        if (Input.GetKeyDown(KeyCode.Joystick1Button4) && !isPlaying )
+        if (Input.GetKeyDown(KeyCode.Joystick1Button4) && !isPlaying)
         {
             Start1PGame();
         }
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver = false;
         aiP2 = true;
+        isPlaying = true;
         menuScript.HideMenu();
         ResetLevel();
     }
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver = false;
         aiP2 = false;
+        isPlaying = true;
         menuScript.HideMenu();
         ResetLevel();
     }

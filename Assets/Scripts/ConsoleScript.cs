@@ -17,11 +17,9 @@ public class ConsoleScript : MonoBehaviour
     public MeshRenderer paddle2Renderer;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
-        gameObject.SetActive(true);
-
-        consoleInputField.ActivateInputField();
+        gameObject.SetActive(false);
         consoleHistory = new List<string>();
         consoleHistoryText.text = "";
     }
