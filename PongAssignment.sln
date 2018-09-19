@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PongAssignment.Plugins", "PongAssignment.Plugins.csproj", "{1ED0A96F-CFFF-BE83-7CFF-00A9A4F157CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PongAssignment", "PongAssignment.csproj", "{305183A2-35CA-079A-A5AF-6B74B6044ADE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1ED0A96F-CFFF-BE83-7CFF-00A9A4F157CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED0A96F-CFFF-BE83-7CFF-00A9A4F157CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED0A96F-CFFF-BE83-7CFF-00A9A4F157CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED0A96F-CFFF-BE83-7CFF-00A9A4F157CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305183A2-35CA-079A-A5AF-6B74B6044ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{305183A2-35CA-079A-A5AF-6B74B6044ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{305183A2-35CA-079A-A5AF-6B74B6044ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{305183A2-35CA-079A-A5AF-6B74B6044ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
