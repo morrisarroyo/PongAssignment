@@ -11,12 +11,14 @@ public class ConsoleScript : MonoBehaviour
     List<string> consoleHistory;
 
     public Text consoleHistoryText;
-    public InputField consoleInputField;
+    public Text consoleInputField;
     public Image consoleBackground;
 
     public MeshRenderer background;
     public MeshRenderer paddle1Renderer;
     public MeshRenderer paddle2Renderer;
+
+    string inputText = "";
     // Use this for initialization
     void Awake()
     {
@@ -28,24 +30,39 @@ public class ConsoleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetConsoleInput();
         if (Input.GetKeyDown(KeyCode.Return)) // Return == Enter
         {
+            inputText = "";
             ProcessConsoleInput();
             PrintConsoleHistory();
-            consoleInputField.text = "";
-            consoleInputField.ActivateInputField();
         }
     }
 
     void QuitConsole()
     {
         gameObject.SetActive(false);
+        GameManager.instance.inConsole = false;
+        GameObject puck = GameObject.FindGameObjectWithTag("Puck");
+
+        if (puck != null)
+        {
+            PuckMovement puckScript = puck.GetComponent<PuckMovement>();
+            //Debug.Log("quitConsole: " + puck);
+            puckScript.PlayMovement();
+        }
     }
 
     public void OpenConsole()
     {
         gameObject.SetActive(true);
-        consoleInputField.ActivateInputField();
+        GameObject puck = GameObject.FindGameObjectWithTag("Puck");
+
+        if (puck != null)
+        {
+            PuckMovement puckScript = puck.GetComponent<PuckMovement>();
+            puckScript.PauseMovement();
+        }
     }
 
     void PrintConsoleHistory()
@@ -63,6 +80,50 @@ public class ConsoleScript : MonoBehaviour
         consoleHistoryText.text = text;
     }
 
+    void GetConsoleInput()
+    {
+
+        if (Input.GetKeyDown(KeyCode.A)) { inputText += "a"; }
+        else if (Input.GetKeyDown(KeyCode.B)) { inputText += "b"; }
+        else if (Input.GetKeyDown(KeyCode.C)) { inputText += "c"; }
+        else if (Input.GetKeyDown(KeyCode.D)) { inputText += "d"; }
+        else if (Input.GetKeyDown(KeyCode.E)) { inputText += "e"; }
+        else if (Input.GetKeyDown(KeyCode.F)) { inputText += "f"; }
+        else if (Input.GetKeyDown(KeyCode.G)) { inputText += "g"; }
+        else if (Input.GetKeyDown(KeyCode.H)) { inputText += "h"; }
+        else if (Input.GetKeyDown(KeyCode.I)) { inputText += "i"; }
+        else if (Input.GetKeyDown(KeyCode.J)) { inputText += "j"; }
+        else if (Input.GetKeyDown(KeyCode.K)) { inputText += "k"; }
+        else if (Input.GetKeyDown(KeyCode.L)) { inputText += "l"; }
+        else if (Input.GetKeyDown(KeyCode.M)) { inputText += "m"; }
+        else if (Input.GetKeyDown(KeyCode.N)) { inputText += "n"; }
+        else if (Input.GetKeyDown(KeyCode.O)) { inputText += "o"; }
+        else if (Input.GetKeyDown(KeyCode.P)) { inputText += "p"; }
+        else if (Input.GetKeyDown(KeyCode.Q)) { inputText += "q"; }
+        else if (Input.GetKeyDown(KeyCode.R)) { inputText += "r"; }
+        else if (Input.GetKeyDown(KeyCode.S)) { inputText += "s"; }
+        else if (Input.GetKeyDown(KeyCode.T)) { inputText += "t"; }
+        else if (Input.GetKeyDown(KeyCode.U)) { inputText += "u"; }
+        else if (Input.GetKeyDown(KeyCode.V)) { inputText += "v"; }
+        else if (Input.GetKeyDown(KeyCode.W)) { inputText += "w"; }
+        else if (Input.GetKeyDown(KeyCode.X)) { inputText += "x"; }
+        else if (Input.GetKeyDown(KeyCode.Y)) { inputText += "y"; }
+        else if (Input.GetKeyDown(KeyCode.Z)) { inputText += "z"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha0)) { inputText += "0"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) { inputText += "1"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) { inputText += "2"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) { inputText += "3"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) { inputText += "4"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha5)) { inputText += "5"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha6)) { inputText += "6"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha7)) { inputText += "7"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha8)) { inputText += "8"; }
+        else if (Input.GetKeyDown(KeyCode.Alpha9)) { inputText += "9"; }
+        else if (Input.GetKeyDown(KeyCode.Space)) { inputText += " "; }
+        else if (Input.GetKeyDown(KeyCode.Backspace)) { inputText = inputText.Remove(inputText.Length - 1); }
+        consoleInputField.text = inputText;
+    }
+
     void ProcessConsoleInput()
     {
         consoleHistory.Add(consoleInputField.text);
@@ -78,6 +139,7 @@ public class ConsoleScript : MonoBehaviour
                 consoleHistory.Add("Invalid number of words");
             }
         }
+        consoleInputField.text = "";
     }
 
     void RunCommand(string command)
@@ -85,18 +147,18 @@ public class ConsoleScript : MonoBehaviour
         switch (command)
         {
             case "quit":
-                gameObject.SetActive(false);
+                QuitConsole();
                 break;
             case "help":
-                consoleHistory.Add("Commands: quit, backgroundColor, paddle1Color, paddle2Color");
+                consoleHistory.Add("Commands: quit, backgroundcolor, paddle1color, paddle2color");
                 break;
-            case "backgroundColor":
+            case "backgroundcolor":
                 background.material.color = getColor();
                 break;
-            case "paddle1Color":
+            case "paddle1color":
                 paddle1Renderer.material.color = getColor();
                 break;
-            case "paddle2Color":
+            case "paddle2color":
                 paddle2Renderer.material.color = getColor();
                 break;
             default:

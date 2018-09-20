@@ -32,7 +32,10 @@ public class PaddleMovement : MonoBehaviour
             v += Input.GetAxisRaw("Vertical3");
         }
         //Debug.Log(gameObject.name + input);
-        Move(v);
+        if (playerNumber == 1 || (playerNumber == 2 && !GameManager.instance.aiP2))
+        {
+            Move(v);
+        }
     }
 
     public void Move(float v)

@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
 
     public bool gameOver;
     public bool isPlaying = false;
+    public bool inConsole = false;
 
-    bool aiP2 = false;
+    public bool aiP2 = false;
     bool pause = false;
     private PuckManager puckScript;
     private GameOverManager gameOverScript;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             consoleScript.OpenConsole();
+            inConsole = true;
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button4) && !isPlaying)
         {
@@ -92,7 +94,6 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverScript.PlayGameOverAnimation(winner);
-
     }
 
     public void ResetGame()

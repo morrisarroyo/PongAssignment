@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PuckMovement : MonoBehaviour
 {
-    public float initialXVelocity = 1.0f;
-    public float maxDirectionalVelocity = 10.0f;
     public float addedVelocity = .25f;
     public float yVelocityMultiplier = 1.0f;
+    public float speed = 5f;
+    public float addSpeed = .5f;
+    public float maxSpeed = 20.0f;
 
     BoxCollider boxCollider;
     Rigidbody rb;
@@ -18,7 +19,7 @@ public class PuckMovement : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
-        velocity = Vector3.left * initialXVelocity;
+        velocity = Vector3.left * speed;
         rb.velocity = velocity;
     }
 
@@ -35,6 +36,17 @@ public class PuckMovement : MonoBehaviour
         velocity = rb.velocity;
     }
 
+    public void PauseMovement()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
+    public void PlayMovement()
+    {
+        rb.velocity = velocity;
+        //Debug.Log("velocity: " + velocity);
+    }
+
     public void PaddleReflect(float addedYVelocity)
     {
         //Debug.Log("velocity.yAT: " + velocity.y + " addedYVelocity: " + addedYVelocity);
@@ -42,15 +54,18 @@ public class PuckMovement : MonoBehaviour
             + new Vector3(addedVelocity * Mathf.Sign(velocity.x), addedYVelocity * yVelocityMultiplier);
         //xVelocityMultiplier += addedVelocity;
         //Debug.Log("velocity.yAFTER: " + rb.velocity.y);
-
+        /*
         if (Mathf.Abs(rb.velocity.x) >= maxDirectionalVelocity)
             rb.velocity = new Vector3(maxDirectionalVelocity * Mathf.Sign(rb.velocity.x), rb.velocity.y);
         if (Mathf.Abs(rb.velocity.y) >= maxDirectionalVelocity)
             rb.velocity = new Vector3(rb.velocity.x, maxDirectionalVelocity * Mathf.Sign(rb.velocity.y));
+        */
         if (Mathf.Abs(addedYVelocity) < .2)
         {
-            rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * rb.velocity.magnitude, 0);
+            rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x), 0);
         }
+        speed += addSpeed;
+        rb.velocity = rb.velocity.normalized * speed;
         velocity = rb.velocity;
         //Debug.Log("velocity.yAFTER2: " + rb.velocity.y);
     }

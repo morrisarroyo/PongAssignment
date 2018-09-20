@@ -25,7 +25,7 @@ public class PaddleAI : MonoBehaviour
             {
                 Follow(movement);
             }
-            Debug.Log(puckTr.position.x);
+            // Debug.Log(puckTr.position.x);
         }
     }
 
