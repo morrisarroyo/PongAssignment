@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="PongAssignment.Plugins.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PaddleAI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PaddleMovement.cs">
     <Files>
       <File FileName="Assets\Scripts\PaddleAI.cs" Line="8" Column="1" />
+      <File FileName="Assets\Scripts\PaddleMovement.cs" Line="33" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
